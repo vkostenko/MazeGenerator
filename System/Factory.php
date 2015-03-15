@@ -1,6 +1,8 @@
 <?php
 namespace MazeGenerator\System;
 
+use MazeGenerator\Field\ISquareField;
+
 class Factory
 {
 	use tSingleton;
@@ -44,6 +46,27 @@ class Factory
 	private function getLineSet()
 	{
 		return \MazeGenerator\Generator\Eller\LineSet::getInstance();
+	}
+
+	/**
+	 * @param ISquareField $field
+	 *
+	 * @return \MazeGenerator\Output\SquareField\Html
+	 */
+	public function getSquareFieldHtmlOutput(ISquareField $field)
+	{
+		$fieldHtml = $this->getSquareFieldHtmlDecorator($field);
+		return new \MazeGenerator\Output\SquareField\Html($fieldHtml);
+	}
+
+	/**
+	 * @param ISquareField $field
+	 *
+	 * @return \MazeGenerator\Output\SquareField\Decorator\Html
+	 */
+	private function getSquareFieldHtmlDecorator(ISquareField $field)
+	{
+		return new \MazeGenerator\Output\SquareField\Decorator\Html($field);
 	}
 }
 

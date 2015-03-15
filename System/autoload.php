@@ -2,7 +2,7 @@
 
 function autoload($name)
 {
-	if (strpos($name, '../') !== false) {
+	if (strpos($name, '..\\') !== false) {
 		throw new \MazeGenerator\Exception\ApplicationException("Wrong class name");
 	}
 
@@ -10,7 +10,9 @@ function autoload($name)
 
 	if (file_exists($name)) {
 		include_once($name);
+		return true;
 	}
+	return false;
 }
 
 spl_autoload_register("autoload");

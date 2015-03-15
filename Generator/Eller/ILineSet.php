@@ -4,7 +4,7 @@ namespace MazeGenerator\Generator\Eller;
 
 interface ILineSet
 {
-	public function setLine($y, $width);
+	public function setLine($y);
 
 	public function createNewSet($x);
 

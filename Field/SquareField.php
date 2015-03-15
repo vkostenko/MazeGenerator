@@ -57,8 +57,8 @@ class SquareField implements ISquareField
 			$this->values[$this->width * $this->posY + $this->posX] = $this->cell->get();
 			$this->posX = $x;
 			$this->posY = $y;
+			$this->cell->set($this->values[$this->width * $y + $x]);
 		}
-		$this->cell->set($this->values[$this->width * $y + $x]);
 
 		return $this->cell;
 	}

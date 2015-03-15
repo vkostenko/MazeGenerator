@@ -26,6 +26,14 @@ class Generator extends \MazeGenerator\Generator\AbstractGenerator
 		$this->fieldHeight = $this->field->getHeight();
 	}
 
+	/**
+	 * @return ISquareField
+	 */
+	public function getField()
+	{
+		return parent::getField();
+	}
+
 	public function generateMaze()
 	{
 		$this->fillTopLine();
@@ -40,11 +48,10 @@ class Generator extends \MazeGenerator\Generator\AbstractGenerator
 	private function getRandomVerticalBorders()
 	{
 		$width = $this->fieldWidth - 2;
-		if ($width <= 1) {
+		if (!$width) {
 			return [];
 		}
-		$positions = new \SplFixedArray($width);
-		$borders = array_rand($positions->toArray(), floor($width / 3));
+		$borders = array_rand(range(1, $width), max(1, floor($width / 3)));
 		if (!is_array($borders)) {
 			return [$borders];
 		}
@@ -63,7 +70,7 @@ class Generator extends \MazeGenerator\Generator\AbstractGenerator
 	private function setBorderBottoms($setPositions, $y)
 	{
 		$bottomBorders = [];
-		$this->line->setLine($y + 1, $this->fieldWidth);
+		$this->line->setLine($y + 1);
 
 		foreach ($setPositions as $setId => $positions) {
 			if (isset($positions[1])) {
@@ -88,7 +95,7 @@ class Generator extends \MazeGenerator\Generator\AbstractGenerator
 
 	private function fillTopLine()
 	{
-		$this->line->setLine(0, $this->fieldWidth);
+		$this->line->setLine(0);
 		$borders = $this->getRandomVerticalBorders();
 		$countBorders = count($borders);
 

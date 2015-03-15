@@ -8,17 +8,16 @@ class LineSet implements ILineSet
 {
 	use tSingleton;
 
-	private $maxSetId = 0, $cellSetIds = [], $lineWidth, $y = 0, $sets;
+	private $maxSetId = 0, $cellSetIds = [], $y = 0, $sets;
 
-	public function setLine($y, $width)
+	public function setLine($y)
 	{
 		$this->sets = [];
-		$this->lineWidth = $width;
 		if (isset($this->cellSetIds[$y - 2])) {
 			unset($this->cellSetIds[$y - 2]);
 		}
 		if (!isset($this->cellSetIds[$y])) {
-			$this->cellSetIds[$y] = new \SplFixedArray($width);
+			$this->cellSetIds[$y] = [];
 		}
 		$this->y = $y;
 	}
@@ -84,6 +83,10 @@ class LineSet implements ILineSet
 	{
 		$valueNew = $this->cellSetIds[$this->y][$x2];
 		$valueOld = $this->cellSetIds[$this->y][$x1];
+
+		if ($valueOld === $valueNew) {
+			return;
+		}
 
 		foreach ($this->sets[$valueOld] as $x) {
 			$this->sets[$valueNew][] = $x;

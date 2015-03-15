@@ -12,10 +12,7 @@ $factory = \MazeGenerator\System\Factory::getInstance();
 $field = $factory->getSquareField($width, $height);
 $field = $factory->getEllerMazeGenerator($field)->generateMaze()->getField();
 
-$fieldHtml = new MazeGenerator\Output\SquareField\Decorator\Html($field);
-
-$output = new MazeGenerator\Output\SquareField\Html($fieldHtml);
-$output->out();
+$factory->getSquareFieldHtmlOutput($field)->out();
 
 
 ?>
