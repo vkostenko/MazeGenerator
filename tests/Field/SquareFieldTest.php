@@ -2,14 +2,14 @@
 
 namespace MazeGenerator\Test;
 
-use MazeGenerator\Field\Cell\ISquareCell;
+use \MazeGenerator\Field\Cell\ISquareCell;
 use \MazeGenerator\System\Factory;
 
 class SquareFieldTest extends \PHPUnit_Framework_Testcase
 {
 	/**
-	 * @covers MazeGenerator\Field\SquareField::getWidth
-	 * @covers MazeGenerator\Field\SquareField::getHeight
+	 * @covers \MazeGenerator\Field\SquareField::getWidth
+	 * @covers \MazeGenerator\Field\SquareField::getHeight
 	 * @dataProvider fieldSizeProvider
 	 */
 	public function testGetSize($width, $height, $expectedWidth, $expectedHeight)
@@ -53,7 +53,7 @@ class SquareFieldTest extends \PHPUnit_Framework_Testcase
 	 */
 	public function testAddRoundBorder()
 	{
-		$borders = 0;
+		$borders     = 0;
 		$squareField = Factory::getInstance()->getSquareField(20, 20);
 		for ($y = 0; $y < $squareField->getHeight(); $y++) {
 			$borders += $squareField->hasBorder(0, $y, ISquareCell::BORDER_LEFT);
@@ -64,7 +64,7 @@ class SquareFieldTest extends \PHPUnit_Framework_Testcase
 			$borders += $squareField->hasBorder($x, $squareField->getHeight() - 1, ISquareCell::BORDER_BOTTOM);
 		}
 
-		$this->assertEquals($borders, 2*$x + 2*$y - 2);
+		$this->assertEquals($borders, 2 * $x + 2 * $y - 2);
 	}
 
 	/**
@@ -93,10 +93,10 @@ class SquareFieldTest extends \PHPUnit_Framework_Testcase
 	public function borderProvider()
 	{
 		return [
-			[3,  5, ISquareCell::BORDER_RIGHT, ISquareCell::BORDER_BOTTOM],
+			[3, 5, ISquareCell::BORDER_RIGHT, ISquareCell::BORDER_BOTTOM],
 			[12, 5, ISquareCell::BORDER_LEFT, ISquareCell::BORDER_RIGHT],
 			[19, 2, ISquareCell::BORDER_TOP, ISquareCell::BORDER_LEFT],
-			[6,  3, ISquareCell::BORDER_BOTTOM, ISquareCell::BORDER_TOP]
+			[6, 3, ISquareCell::BORDER_BOTTOM, ISquareCell::BORDER_TOP]
 		];
 	}
 }

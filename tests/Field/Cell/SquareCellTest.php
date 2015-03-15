@@ -11,10 +11,11 @@ class SquareCellTest extends \PHPUnit_Framework_Testcase
 	 */
 	private function getSquareCellObject()
 	{
-		$class = new \ReflectionClass('\MazeGenerator\System\Factory');
+		$class  = new \ReflectionClass('\MazeGenerator\System\Factory');
 		$method = $class->getMethod('getSquareCell');
 		$method->setAccessible(true);
 		$factory = \MazeGenerator\System\Factory::getInstance();
+
 		return $method->invoke($factory);
 	}
 

@@ -3,6 +3,7 @@
 namespace MazeGenerator\Output\SquareField\Decorator;
 
 use MazeGenerator\Field\ISquareField;
+use MazeGenerator\Field\Cell\ISquareCell;
 
 class Html implements IHtml
 {
@@ -16,17 +17,20 @@ class Html implements IHtml
 		$this->field = $field;
 	}
 
-	public function getWidth() {
+	public function getWidth()
+	{
 		return $this->field->getWidth();
 	}
 
-	public function getHeight() {
+	public function getHeight()
+	{
 		return $this->field->getHeight();
 	}
 
-	public function getClasses( $x, $y ) {
-		$classes  = $this->field->hasBorder($x, $y, \MazeGenerator\Field\Cell\ISquareCell::BORDER_RIGHT) ? 'right ' : '';
-		$classes .= $this->field->hasBorder($x, $y, \MazeGenerator\Field\Cell\ISquareCell::BORDER_BOTTOM) ? 'bottom ' : '';
+	public function getClasses($x, $y)
+	{
+		$classes = $this->field->hasBorder($x, $y, ISquareCell::BORDER_RIGHT) ? 'right ' : '';
+		$classes .= $this->field->hasBorder($x, $y, ISquareCell::BORDER_BOTTOM) ? 'bottom ' : '';
 		if ($x === 0 & $y !== 0) {
 			$classes .= 'left ';
 		}

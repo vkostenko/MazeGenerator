@@ -2,7 +2,7 @@
 
 function autoload($name)
 {
-	if (strpos($name, '../') !== FALSE) {
+	if (strpos($name, '../') !== false) {
 		throw new \MazeGenerator\Exception\ApplicationException("Wrong class name");
 	}
 

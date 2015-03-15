@@ -3,7 +3,7 @@ namespace MazeGenerator\System;
 
 class Factory
 {
-    use tSingleton;
+	use tSingleton;
 
 	/**
 	 * @param $width
@@ -11,11 +11,12 @@ class Factory
 	 *
 	 * @return \MazeGenerator\Field\ISquareField
 	 */
-    public function getSquareField($width, $height)
-    {
-	    $squareCell = $this->getSquareCell();
-        return new \MazeGenerator\Field\SquareField($squareCell, intval($width), intval($height));
-    }
+	public function getSquareField($width, $height)
+	{
+		$squareCell = $this->getSquareCell();
+
+		return new \MazeGenerator\Field\SquareField($squareCell, intval($width), intval($height));
+	}
 
 	/**
 	 * @return \MazeGenerator\Field\Cell\ISquareCell
@@ -30,11 +31,12 @@ class Factory
 	 *
 	 * @return \MazeGenerator\Generator\AbstractGenerator
 	 */
-    public function getEllerMazeGenerator(\MazeGenerator\Field\ISquareField $field)
-    {
-        $lineSet = $this->getLineSet();
-        return new \MazeGenerator\Generator\Eller\Generator($field, $lineSet);
-    }
+	public function getEllerMazeGenerator(\MazeGenerator\Field\ISquareField $field)
+	{
+		$lineSet = $this->getLineSet();
+
+		return new \MazeGenerator\Generator\Eller\Generator($field, $lineSet);
+	}
 
 	/**
 	 * @return \MazeGenerator\Generator\Eller\ILineSet
@@ -43,7 +45,6 @@ class Factory
 	{
 		return \MazeGenerator\Generator\Eller\LineSet::getInstance();
 	}
-
 }
 
 ?>

@@ -12,5 +12,5 @@ interface IHtml
 
 	public function getHeight();
 
-	public function getClasses( $x, $y );
+	public function getClasses($x, $y);
 }

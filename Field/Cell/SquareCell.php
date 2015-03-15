@@ -24,19 +24,19 @@ class SquareCell implements ISquareCell
 
 	public function addBorder($type)
 	{
-//        assert('array_key_exists($type, $this->borderTypes)');
+//		assert('array_key_exists($type, $this->borderTypes)');
 		$this->borders |= $this->borderTypes[$type];
 	}
 
 	public function removeBorder($type)
 	{
-//        assert('array_key_exists($type, $this->borderTypes)');
+//		assert('array_key_exists($type, $this->borderTypes)');
 		$this->borders &= (~$this->borderTypes[$type]);
 	}
 
 	public function hasBorder($type)
 	{
-//        assert('array_key_exists($type, $this->borderTypes)');
+//		assert('array_key_exists($type, $this->borderTypes)');
 		return ($this->borders & $this->borderTypes[$type]) OR false;
 	}
 }
