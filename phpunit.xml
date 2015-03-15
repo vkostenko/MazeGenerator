@@ -1,0 +1,7 @@
+<phpunit bootstrap="System/autoload.php">
+    <testsuites>
+        <testsuite name="mazeGenerator">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
